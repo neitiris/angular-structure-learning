@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { AppComponent } from './app.component';
 import {ApproutingModule} from './approuter.module';
 import {ApiService} from '../services/api';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthService} from '../services/authservice/auth.service';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 import {UserService} from '../services/userservice';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
@@ -33,11 +33,10 @@ import {AuthGuardService} from '../services/authguard';
   imports: [
     ApproutingModule,
     BrowserModule,
-    FormsModule,
-    HttpModule
+    Angular2FontawesomeModule,
+    FormsModule
   ],
   providers: [
-    HttpModule,
     HttpClientModule,
     ApiService,
     UserService,
