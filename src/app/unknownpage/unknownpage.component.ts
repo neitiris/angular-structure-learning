@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-unknownpage',
-  templateUrl: './unknownpage.component.html',
-  styleUrls: ['./unknownpage.component.css']
+  template: `
+    <div>
+      <h1>404: page missing</h1>
+    </div>
+  `
 })
 export class UnknownpageComponent implements OnInit {
 

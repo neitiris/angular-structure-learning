@@ -2,21 +2,21 @@
 <header>
               <!--Admin logo-->
   <div class="logo-header">
-    <a href="#">Admin LTE</a>
+    <a href="" (click)="quit()">Admin LTE</a>
   </div>
                 <!--End of Admin logo div-->
 
                 <!--Header buttons)-->
   <div class="head-btns-container">
     <div class="head-btns">
-      <a href="#" class="showed-header-btns"><span><i class="fa fa-circle text-success"></i></span></a>
-      <a href="#" class="showed-header-btns"><span><i class="fa fa-circle text-success"></i></span></a>
-      <a href="#" class="showed-header-btns"><span><i class="fa fa-circle text-success"></i></span></a>
+      <a href="#" class="showed-header-btns"><span><i class="fas fa-envelope"></i></span></a>
+      <a href="#" class="showed-header-btns"><span><i class="fas fa-bell"></i></span></a>
+      <a href="#" class="showed-header-btns"><span><i class="fas fa-flag"></i></span></a>
       <a href="#" id="img-btn">
         <img src="http://cactusthemes.com/blog/wp-content/uploads/2018/01/tt_avatar_small.jpg" class="avatar-header-img">
         <span>User Name</span>
       </a>
-      <a href="#" class="showed-header-btns"><span><i class="fa fa-circle text-success"></i></span></a>
+      <a href="#" class="showed-header-btns"><span><i class="fas fa-cogs"></i></span></a>
     </div>
   </div>
                 <!--Header buttons)-->
@@ -31,9 +31,9 @@
       <span>
         <i>Jack Sparrow</i>
         <a href="#">
-        <i class="fa fa-circle text-success"></i>
-        Online
-      </a>
+          <i class="fa fa-circle text-success"></i>
+          <a class="text-a">Online</a>
+        </a>
       </span>
   </div>
               <!--Search form(Not working yet)-->
@@ -41,7 +41,7 @@
     <div class="search-block">
       <div class="search-input">
         <input type="text" placeholder="Search">
-        <span><button type="submit" class="btn btn-flat"><i class="fa fa-search"></i></button></span>
+        <span><button type="submit" class="btn btn-flat"><span><i class="fa fa-search"></i></span></button></span>
       </div>
     </div>
   </form>
@@ -51,9 +51,10 @@
   <ul class="sidebar-nav-ul">
     <li class="head-li">Main Navigation</li>
     <li *ngFor="let menuItem of menuItems">
-      <span class="showed" (click)="menuClicked(menuItem)"><span><i class="fa fa-circle text-success"></i>{{menuItem.title}}</span></span>
+      <span class="showed" (click)="menuClicked(menuItem)"><span><i class="{{menuItem.icon}}"></i>{{menuItem.title}}</span></span>
       <ul [ngStyle]="{'height': menuItem.opened ? 30 * menuItem.innerItems.length + 'px' : 0}" class="menu-children-container">
-        <li *ngFor="let listChildren of menuItem.innerItems" (click)="menuChildClicked(listChildren)"><a href="#">{{listChildren.title}}</a></li>
+        <li *ngFor="let listChildren of menuItem.innerItems" (click)="menuChildClicked(listChildren)">
+          <a href="#">{{listChildren.title}}</a></li>
       </ul>
     </li>
   </ul>

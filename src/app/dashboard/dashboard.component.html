@@ -1,0 +1,39 @@
+<div class="dash-container">
+  <!--Table with list from backend-->
+  <div class="table-box">
+    <table>
+      <thead>
+      <tr>
+        <th><input type="checkbox"ng-click="toggleAll()" ng-model="isAllSelected">></th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Company</th>
+        <th>Created</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of usersList">
+        <td class="checkbox"> </td>
+        <td>{{item.id}}</td>
+        <td>{{item.firstName}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.companyName}}</td>
+        <td>{{item.createdAt}}</td>
+        <td><button class="editCl">
+          <i class="fa fa-edit"></i></button></td>
+        <!--<td><button class="deleteCl" (click)="deleteUserData(this.item.id)" >-->
+        <!--<i class="fa fa-trash"></i></button></td>-->
+        <!--</tr>-->
+      </tbody>
+    </table>
+    <button id="createU" >Create User</button>
+    <button id="delU" >Delete Marked Users</button>
+    <button id="mU" >Some Magic</button>
+  </div>
+  <!--End of Table with list from backend-->
+
+</div>
+

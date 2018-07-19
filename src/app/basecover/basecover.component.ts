@@ -1,35 +1,36 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../services/authservice';
 @Component({
   selector: 'app-basecover',
   templateUrl: './basecover.component.html',
   styleUrls: ['./basecover.component.css']
 })
 export class BasecoverComponent implements OnInit {
+  public authservice: AuthService;
 
   public menuItems: any[] = [
-    {header: 'Dashboard', button: ['Dashboard1', 'Dashboard2']},
-    {header: 'Layout Options', button: ['Top Navigation', 'Boxed', 'Fixed', 'Collapsed Sidebar']},
-    {header: 'Widgets', button: ['Widgets']},
-    {header: 'Charts', button: ['ChartsJS', 'Morris', 'Flot', 'Inline Charts']},
-    {header: 'UI Elements', button: ['General', 'Icons', 'Buttons', 'Sliders', 'Timeline', 'Modals']},
-    {header: 'Forms', button: ['General Elements', 'Advanced Elements', 'Editors']},
-    {header: 'Tables', button: ['Simple Tables', 'Data Tables']},
-    {header: 'Calendar', button: ['Calendar']},
-    {header: 'Mailbox', button: ['Inbox', 'Compose', 'Read']},
-    {header: 'Examples', button: ['Invoice', 'Profile', 'Login', 'Register', 'Lockscreen', '404 Error']},
-    {header: 'Multilevel', button: ['Level1', 'Level2', 'Level3']},
-    {header: 'Documentation'},
-    {header: 'Important'},
-    {header: 'Warnings'},
-    {header: 'Information'},
-    {header: 'Premium Templates'},
+    {ico: 'fas fa-tachometer-alt', header: 'Dashboard', button: ['Dashboard1', 'Dashboard2']},
+    {ico: 'far fa-copy', header: 'Layout Options', button: ['Top Navigation', 'Boxed', 'Fixed', 'Collapsed Sidebar']},
+    {ico: 'fas fa-th', header: 'Widgets', button: ['Widgets']},
+    {ico: 'fas fa-chart-pie', header: 'Charts', button: ['ChartsJS', 'Morris', 'Flot', 'Inline Charts']},
+    {ico: 'fas fa-laptop', header: 'UI Elements', button: ['General', 'Icons', 'Buttons', 'Sliders', 'Timeline', 'Modals']},
+    {ico: 'fas fa-edit', header: 'Forms', button: ['General Elements', 'Advanced Elements', 'Editors']},
+    {ico: 'fas fa-th-list', header: 'Tables', button: ['Simple Tables', 'Data Tables']},
+    {ico: 'fas fa-calendar-alt', header: 'Calendar', button: ['Calendar']},
+    {ico: 'fas fa-envelope', header: 'Mailbox', button: ['Inbox', 'Compose', 'Read']},
+    {ico: 'fas fa-folder', header: 'Examples', button: ['Invoice', 'Profile', 'Login', 'Register', 'Lockscreen', '404 Error']},
+    {ico: 'fas fa-reply-all', header: 'Multilevel', button: ['Level1', 'Level2', 'Level3']},
+    {ico: 'fas fa-tachometer-alt', header: 'Documentation'},
+    {ico: 'fas fa-tachometer-alt', header: 'Important'},
+    {ico: 'fas fa-tachometer-alt', header: 'Warnings'},
+    {ico: 'fas fa-tachometer-alt', header: 'Information'},
+    {ico: 'fas fa-tachometer-alt', header: 'Premium Templates'},
   ];
   constructor() { }
 
   public ngOnInit() {
     this.populateMenu();
   }
-
   /**
    * Change menu 'opened' property value on menu item click
    * And close any other opened menu item
@@ -66,7 +67,8 @@ export class BasecoverComponent implements OnInit {
           id: m,
           opened: false,
           title: this.menuItems[m].header,
-          innerItems: []
+          innerItems: [],
+          icon: this.menuItems[m].ico
         };
         if (this.menuItems[m].button) {
           for (let c = 0; c < this.menuItems[m].button.length; c++) {
@@ -80,5 +82,8 @@ export class BasecoverComponent implements OnInit {
       }
       this.menuItems = allItems;
     }
+  }
+  quit() {
+    this.authservice.logOutFunk();
   }
 }

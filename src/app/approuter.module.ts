@@ -8,21 +8,33 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {UserslistComponent} from './userslist/userslist.component';
 import {ManageuserComponent} from './manageuser/manageuser.component';
 import {AuthGuardService} from '../services/authguard';
+import {ContactComponent} from './contact/contact.component';
+import {CvcoverComponent} from './cvcover/cvcover.component';
+import {AboutComponent} from './about/about.component';
+import {SkillsComponent} from './skills/skills.component';
 
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'land', pathMatch: 'full'},
-  { path: 'land', component: LandingpageComponent},
-  { path: 'login', component: LoginpageComponent},
-  { path: 'unknown', component: UnknownpageComponent},
+  { path: '', redirectTo: 'land', pathMatch: 'full' },
+  { path: 'login', component: LoginpageComponent },
+  { path: 'unknown', component: UnknownpageComponent },
+
+  { path: '', component: CvcoverComponent,
+    children: [
+      { path: 'land', component: LandingpageComponent },
+      { path: 'contact', component: ContactComponent },
+      { path: 'about', component: AboutComponent },
+      { path: 'skills', component: SkillsComponent },
+    ],
+  },
 
   { path: 'admin', component: BasecoverComponent,
     children: [
-      {path: 'dashboard', component: DashboardComponent},
-      {path: 'userlist', component: UserslistComponent},
-      {path: 'manageuser', component: ManageuserComponent},
+      {path: 'dashboard', component: DashboardComponent },
+      {path: 'userlist', component: UserslistComponent },
+      {path: 'manageuser', component: ManageuserComponent },
     ],
-    canActivate: [AuthGuardService]
+    canActivate: [ AuthGuardService ]
   },
 ];
 
