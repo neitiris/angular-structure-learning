@@ -10,11 +10,15 @@ import {Router} from '@angular/router';
 export class DashboardComponent implements OnInit {
   public usersList: any[] = [];
   public usersListString = '';
+  public options: any = {
+    checkedAll: false
+  };
 
   constructor(public userService: UserService,
-              private router: Router) {}
+              private router: Router) {
+  }
 
-  public  ngOnInit() {
+  public ngOnInit() {
     this.getUsers();
   }
 
@@ -33,12 +37,41 @@ export class DashboardComponent implements OnInit {
       },
     );
   }
+
   // Route to userEdit by id
   public goToDetails(id) {
     this.router.navigate(['admin', 'manageuser', id]);
   }
+
   // Route to userEdit for create User
   public createUser() {
     this.router.navigate(['admin', 'manageuser', 'newUser']);
+  }
+
+  /**
+   * Checkbox handler function
+   * check one or all items in usersList
+   * @param item
+   */
+  public check(item?: any) {
+    // Provide check of defined list item if it exist
+    if (item) {
+      // Iterate in usersList and check/uncheck only item with same id
+      this.usersList = this.usersList.map((u: any) => {
+        if (u.id === item.id) {
+          u.checked = !u.checked;
+          // Uncheck general checkbox as it can't be checked if any of 'checked' differs from rest of items
+          this.options.checkedAll = false;
+        }
+        return u;
+      });
+    } else {
+      // Check/Uncheck all items if no defined item to check
+      this.options.checkedAll = !this.options.checkedAll;
+      this.usersList = this.usersList.map((u: any) => {
+        u.checked = this.options.checkedAll;
+        return u;
+      });
+    }
   }
 }

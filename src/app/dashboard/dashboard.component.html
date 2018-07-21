@@ -4,7 +4,7 @@
     <table>
       <thead>
       <tr>
-        <th><input type="checkbox"ng-click="toggleAll()" ng-model="isAllSelected"></th>
+        <th><input type="checkbox" (click)="check()" [checked]="options.checkedAll"></th>
         <th>Id</th>
         <th>Name</th>
         <th>Email</th>
@@ -16,7 +16,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let item of usersList">
-        <td class="checkbox"> </td>
+        <td class="checkbox"><input type="checkbox" [checked]="item.checked" class="checkbox" (click)="check(item)"/></td>
         <td class="id-td">{{item.id}}</td>
         <td>{{item.firstName}}</td>
         <td>{{item.email}}</td>
