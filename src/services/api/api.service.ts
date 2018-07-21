@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, HttpEvent } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -44,7 +44,7 @@ export class ApiService implements OnInit {
    * @param {string} path
    * @returns {Observable<any>}
    */
-  public get(path: string): Observable<any> {
+  public get(path: string): Observable<HttpResponse<any>> {
     return this.http.get(`${this.endpoint}${path}`, this.getDefaultOptions())
       .pipe(map(this.checkForError))
       .pipe(catchError(this.catchErr))
@@ -58,7 +58,7 @@ export class ApiService implements OnInit {
    * @param options
    * @returns {Observable<any>}
    */
-  public post(path: string, body: any, options?: any): Observable<any> {
+  public post(path: string, body: any, options?: any): Observable<HttpEvent<any>> {
     return this.http.post(`${this.endpoint}${path}`, body, this.getDefaultOptions(options))
       .pipe(map(this.checkForError))
       .pipe(catchError(this.catchErr))
@@ -97,6 +97,7 @@ export class ApiService implements OnInit {
    * @returns {any}
    */
   public getJson(r: any) {
+    console.log('getJson r', r);
     return r && r._body && r._body.length ? r.json() : r;
   }
 
@@ -106,9 +107,10 @@ export class ApiService implements OnInit {
    * @returns {HttpResponse<any>}
    */
   public checkForError(resp: any): HttpResponse<any> {
+    console.log('checkForError resp', resp);
     if (resp.status >= 500) {
       return resp;
-    } else if (resp.status >= 200 && resp.status < 300) {
+    } else if ((resp.status >= 200 && resp.status < 300) || !resp.status) {
       return resp;
     } else if (resp.status === 401) {
       const error = new Error(resp.statusText);
@@ -153,12 +155,15 @@ export class ApiService implements OnInit {
    * @returns {Observable<never>}
    */
   public catchErr(err: any) {
+    console.log('catchErr err', err);
     if (err && err._body && typeof err._body === 'string') {
       const errBody: any = JSON.parse(err._body);
       err.message = errBody && errBody.error && errBody.error.message ?
         errBody.error.message : 'Error.';
+      return throwError(err);
+    } else {
+      return err;
     }
-    return throwError(err);
   }
 
   /**

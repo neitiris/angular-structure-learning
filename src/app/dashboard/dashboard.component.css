@@ -1,0 +1,61 @@
+.dash-container{
+  padding: 10px;
+}
+.table-box{
+  border: 3px solid lightgrey;
+  display: inline-block;
+  border-radius: 7px;
+  font-size: 90%;
+  background: white;
+}
+table{
+  margin: 10px;
+  border: 1px solid grey;
+  border-collapse: collapse;
+}
+thead{
+  padding: 0;
+}
+tr th{
+  border: 1px solid black ;
+  text-align: center;
+  padding: 2px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+tr td{
+  border: 1px solid lightgrey;
+  padding: 3px 3px 3px 12px;
+}
+.id-td{
+  padding: 0 3px 0 3px !important;
+  text-align: center;
+}
+tr td button{
+  height: 24px;
+  width: 23px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  padding: 4px;
+  font-size: 17px;
+}
+#createU, #delU, #mU{
+  margin: 0 0 10px  10px ;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  height: 25px;
+  padding: 0 4px 0 4px;
+}
+#createU{
+  background: cornflowerblue;
+}
+#delU, .deleteCl{
+  background: red;
+}
+.editCl{
+  background: #428bca;
+}
+

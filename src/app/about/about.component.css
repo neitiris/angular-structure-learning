@@ -1,0 +1,106 @@
+p{
+  font-size: 108%;
+}
+.line{
+  border-bottom: 4px solid black;
+  width: 400px;
+  padding-top: 28px;
+  text-align: center;
+  margin-left: 50px;
+  position: absolute;
+  left: 35.3%;
+}
+.about-container{
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 10px;
+  background: mintcream;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px 3px gray;
+  height: 100%;
+}
+.about-container h2{
+  margin: 3px;
+  left: 40%;
+  width: 200px;
+  font-size: 45px;
+  z-index: 10;
+  position: relative;
+  background: mintcream;
+}
+img{
+  border-radius: 50%;
+  height: 180px;
+  border: 1px solid #595959;
+  /* padding: 1px; */
+  margin: 0 21px 21px 21px;
+  float: left;
+}
+[data-aos^=zoom][data-aos^=zoom].aos-animate {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+.content{
+  padding:20px;
+  background: #424242;
+  border-radius: 4px;
+}
+.content h5{
+  margin: 0;
+  text-align: center;
+  font-size: 23px;
+}
+.skill-progress {
+  position: relative;
+  background-color: #1c1c1c;
+  margin: 15px 0;
+  height: 3px;
+  z-index: 0;
+  overflow: visible;
+}
+.progress .determinate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  transition: width 2s linear;
+}
+.skill-determinate {
+  transition: width 1s ease;
+}
+.skill-determinate .skill-determinate-circle {
+  position: absolute;
+  right: 0%;
+  top: -7px;
+  color: #ffffff;
+  font-size: 18px;
+}
+i{
+  transition-delay: .3s;
+}
+.row{
+  height: 100%;
+}
+.row h3{
+  text-align: center;
+  color: black;
+  font-size: 40px;
+  margin: 0 0 10px 0;
+  padding-top: 40px;
+}
+.row .col{
+  float: left;
+  box-sizing: border-box;
+  width: 33.33%;
+  padding: 15px;
+}
+.row *{
+  color: white;
+}
+.header-container-block{
+  min-height: 30%;
+}
+.width-zero {
+  width: 0 !important;
+}
