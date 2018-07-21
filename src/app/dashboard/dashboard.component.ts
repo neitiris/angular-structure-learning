@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/userservice';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,11 +11,13 @@ export class DashboardComponent implements OnInit {
   public usersList: any[] = [];
   public usersListString = '';
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService,
+              private router: Router) {}
 
-  ngOnInit() {
+  public  ngOnInit() {
     this.getUsers();
   }
+
   // request to backend for users list
   public getUsers() {
     const urlParams = '?page=1&limit=50';
@@ -29,5 +32,13 @@ export class DashboardComponent implements OnInit {
         console.log('err', err);
       },
     );
+  }
+  // Route to userEdit by id
+  public goToDetails(id) {
+    this.router.navigate(['', 'useredit', id]);
+  }
+  // Route to userEdit for create User
+  public createUser() {
+    this.router.navigate(['', 'useredit', 'newUser']);
   }
 }

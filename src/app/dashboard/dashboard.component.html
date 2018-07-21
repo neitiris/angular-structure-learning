@@ -22,18 +22,18 @@
         <td>{{item.email}}</td>
         <td>{{item.companyName}}</td>
         <td>{{item.createdAt}}</td>
-        <td><button class="editCl">
+        <td><button class="editCl" (click)="goToDetails(this.item.id)">
           <i class="fa fa-edit"></i></button></td>
         <!--<td><button class="deleteCl" (click)="deleteUserData(this.item.id)" >-->
         <!--<i class="fa fa-trash"></i></button></td>-->
         <!--</tr>-->
       </tbody>
     </table>
-    <button id="createU" >Create User</button>
+    <button id="createU" (click)="createUser()">Create User</button>
     <button id="delU" >Delete Marked Users</button>
     <button id="mU" >Some Magic</button>
   </div>
   <!--End of Table with list from backend-->
-
 </div>
+
 

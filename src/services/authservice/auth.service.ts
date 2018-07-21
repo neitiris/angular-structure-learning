@@ -1,7 +1,8 @@
 import {IAuthData} from '../../shared/interfaces';
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
 import {ApiService} from '../api';
+import {Observable} from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 
@@ -10,24 +11,17 @@ export class AuthService {
   public user: IAuthData = {email: '', password: ''};
   constructor(
     private api: ApiService,
-    private router: Router,
   ) {}
-                // Authenticate function
-  public authenticate(data: IAuthData) {
+  // Authenticate function
+  public authenticate(data: IAuthData): Observable <any> {
     console.log('data', data);
-    if (data.email && data.password) {
-      this.api.post('/signin', {email: data.email, password: data.password}).subscribe(
-        (user) => {
-          if (user && user.data && user.data.authToken) {
-            localStorage.setItem('currentUser', JSON.stringify(user.data));
-            this.user.email = user.data.email;
-          }
-        },
-        (err: any) => {
-          console.log('err', err);
-        }
-      );
-    }
+    return this.api.post('/signin', {email: data.email, password: data.password})
+      .pipe(map((resp: any) => {
+        console.log('auth resp in service', resp);
+        return resp;
+      }));
+    // if (data.email && data.password) {
+    // }
   }
               // Checking for login User
   public userloggedin() {

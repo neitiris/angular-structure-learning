@@ -70,7 +70,7 @@ export class BasecoverComponent implements OnInit {
           innerItems: [],
           icon: this.menuItems[m].ico
         };
-        if (this.menuItems[m].button) {
+        if (this.menuItems[m] && this.menuItems[m].button) {
           for (let c = 0; c < this.menuItems[m].button.length; c++) {
             item.innerItems.push({
               id: 1000 * m + c,
@@ -79,7 +79,7 @@ export class BasecoverComponent implements OnInit {
           }
           allItems.push(item);
         }
-      }
+    }
       this.menuItems = allItems;
     }
   }
