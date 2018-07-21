@@ -20,8 +20,6 @@ export class AuthService {
         console.log('auth resp in service', resp);
         return resp;
       }));
-    // if (data.email && data.password) {
-    // }
   }
               // Checking for login User
   public userloggedin() {

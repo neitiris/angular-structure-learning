@@ -4,7 +4,7 @@
     <table>
       <thead>
       <tr>
-        <th><input type="checkbox"ng-click="toggleAll()" ng-model="isAllSelected">></th>
+        <th><input type="checkbox"ng-click="toggleAll()" ng-model="isAllSelected"></th>
         <th>Id</th>
         <th>Name</th>
         <th>Email</th>
@@ -17,7 +17,7 @@
       <tbody>
       <tr *ngFor="let item of usersList">
         <td class="checkbox"> </td>
-        <td>{{item.id}}</td>
+        <td class="id-td">{{item.id}}</td>
         <td>{{item.firstName}}</td>
         <td>{{item.email}}</td>
         <td>{{item.companyName}}</td>
@@ -31,7 +31,6 @@
     </table>
     <button id="createU" (click)="createUser()">Create User</button>
     <button id="delU" >Delete Marked Users</button>
-    <button id="mU" >Some Magic</button>
   </div>
   <!--End of Table with list from backend-->
 </div>

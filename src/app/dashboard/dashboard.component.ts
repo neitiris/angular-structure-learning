@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
 
   // request to backend for users list
   public getUsers() {
-    const urlParams = '?page=1&limit=50';
+    const urlParams = '?page=1&limit=15';
     this.userService.getUsers(urlParams).subscribe(
       (resp: any) => {
         console.log('getUsers resp', resp);
@@ -35,10 +35,10 @@ export class DashboardComponent implements OnInit {
   }
   // Route to userEdit by id
   public goToDetails(id) {
-    this.router.navigate(['', 'useredit', id]);
+    this.router.navigate(['admin', 'manageuser', id]);
   }
   // Route to userEdit for create User
   public createUser() {
-    this.router.navigate(['', 'useredit', 'newUser']);
+    this.router.navigate(['admin', 'manageuser', 'newUser']);
   }
 }

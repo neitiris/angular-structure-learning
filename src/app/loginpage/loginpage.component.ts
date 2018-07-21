@@ -32,6 +32,7 @@ export class LoginpageComponent {
           localStorage. setItem('currentUser', JSON.stringify(userdata.data));
           this.user.email = userdata.data.email;
           console.log('Login Sucsess');
+          this.router.navigate([ 'admin', 'dashboard']);
         }
       },
       (err: any) => {

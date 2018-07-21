@@ -32,7 +32,7 @@ const appRoutes: Routes = [
     children: [
       {path: 'dashboard', component: DashboardComponent },
       {path: 'userlist', component: UserslistComponent },
-      {path: 'manageuser', component: ManageuserComponent },
+      {path: 'manageuser/:id', component: ManageuserComponent },
     ],
     canActivate: [ AuthGuardService ]
   },

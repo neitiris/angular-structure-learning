@@ -60,10 +60,7 @@ export class ApiService implements OnInit {
    */
   public post(path: string, body: any, options?: any): Observable<HttpEvent<any>> {
     return this.http.post(`${this.endpoint}${path}`, body, this.getDefaultOptions(options))
-      .pipe(map((r1: Event, r2: any) => {
-        console.log('r1', r1, ' r2', r2);
-        this.checkForError(r1);
-      }))
+      .pipe(map(this.checkForError))
       .pipe(catchError(this.catchErr))
       .pipe(map(this.getJson));
   }
@@ -110,6 +107,7 @@ export class ApiService implements OnInit {
    * @returns {HttpResponse<any>}
    */
   public checkForError(resp: any): HttpResponse<any> {
+    console.log('checkForError resp', resp);
     if (resp.status >= 500) {
       return resp;
     } else if ((resp.status >= 200 && resp.status < 300) || !resp.status) {
@@ -157,12 +155,15 @@ export class ApiService implements OnInit {
    * @returns {Observable<never>}
    */
   public catchErr(err: any) {
+    console.log('catchErr err', err);
     if (err && err._body && typeof err._body === 'string') {
       const errBody: any = JSON.parse(err._body);
       err.message = errBody && errBody.error && errBody.error.message ?
         errBody.error.message : 'Error.';
+      return throwError(err);
+    } else {
+      return err;
     }
-    return throwError(err);
   }
 
   /**

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/authservice';
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-basecover',
   templateUrl: './basecover.component.html',
   styleUrls: ['./basecover.component.css']
 })
 export class BasecoverComponent implements OnInit {
-  public authservice: AuthService;
 
   public menuItems: any[] = [
     {ico: 'fas fa-tachometer-alt', header: 'Dashboard', button: ['Dashboard1', 'Dashboard2']},
@@ -26,7 +27,10 @@ export class BasecoverComponent implements OnInit {
     {ico: 'fas fa-tachometer-alt', header: 'Information'},
     {ico: 'fas fa-tachometer-alt', header: 'Premium Templates'},
   ];
-  constructor() { }
+  constructor(
+    public authservice: AuthService,
+    public router: Router
+  ) { }
 
   public ngOnInit() {
     this.populateMenu();
@@ -85,5 +89,7 @@ export class BasecoverComponent implements OnInit {
   }
   quit() {
     this.authservice.logOutFunk();
+    console.log('Log out sucsess');
+    this.router.navigate([ '', 'land']);
   }
 }
