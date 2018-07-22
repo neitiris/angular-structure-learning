@@ -4,7 +4,7 @@
     <table>
       <thead>
       <tr>
-        <th><input type="checkbox"ng-click="toggleAll()" ng-model="isAllSelected"></th>
+        <th><input type="checkbox" (click)="check()" [checked]="options.checkedAll"></th>
         <th>Id</th>
         <th>Name</th>
         <th>Email</th>
@@ -16,7 +16,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let item of usersList">
-        <td class="checkbox"> </td>
+        <td class="checkbox"><input type="checkbox" [checked]="item.checked" class="checkbox" (click)="check(item)"/></td>
         <td class="id-td">{{item.id}}</td>
         <td>{{item.firstName}}</td>
         <td>{{item.email}}</td>
@@ -24,11 +24,25 @@
         <td>{{item.createdAt}}</td>
         <td><button class="editCl" (click)="goToDetails(this.item.id)">
           <i class="fa fa-edit"></i></button></td>
-        <!--<td><button class="deleteCl" (click)="deleteUserData(this.item.id)" >-->
-        <!--<i class="fa fa-trash"></i></button></td>-->
-        <!--</tr>-->
+        <td>
+          <button *ngIf="false" class="deleteCl" (click)="deleteUserData(this.item.id)" >
+          <i *ngIf="false" class="fa fa-trash"></i></button></td>
+        </tr>
       </tbody>
     </table>
+    <div class="pagination">
+      <select (change)= chooseshowed($event.target.value)>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15" selected>15</option>
+        <option value="20">20</option>
+      </select>
+      <button (click)="paginate('first')"><<</button>
+      <button (click)="paginate(-1)"><</button>
+      <span> {{numpage}} of {{pages}} pages </span>
+      <button (click)="paginate(1)">></button>
+      <button (click)="paginate('last')">>></button>
+    </div>
     <button id="createU" (click)="createUser()">Create User</button>
     <button id="delU" >Delete Marked Users</button>
   </div>
