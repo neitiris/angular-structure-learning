@@ -10,10 +10,14 @@ import {Router} from '@angular/router';
 export class DashboardComponent implements OnInit {
   public usersList: any[] = [];
   public usersListString = '';
+  public count = '';
+  public showedrows = 15;
+  public pages = 0;
+  public urlParams = '';
   public options: any = {
-    checkedAll: false
+    checkedAll: false,
   };
-
+  public numpage = 1;
   constructor(public userService: UserService,
               private router: Router) {
   }
@@ -24,13 +28,18 @@ export class DashboardComponent implements OnInit {
 
   // request to backend for users list
   public getUsers() {
-    const urlParams = '?page=1&limit=15';
-    this.userService.getUsers(urlParams).subscribe(
+    // const urlParams = '?page=1&limit=15&where={"phoneNumber1":"123"}';
+    this.urlParams = '?page=' + String(this.numpage) + '&limit=' + String(this.showedrows) + '&order={"createdAt":-1}';
+    console.log(this.urlParams);
+    this.userService.getUsers(this.urlParams).subscribe(
       (resp: any) => {
         console.log('getUsers resp', resp);
         this.usersList = resp.rows;
         this.usersListString = JSON.stringify(this.usersList, null, 2);
+        this.count = resp.count;
+        this.pages =  Math.ceil(((+this.count) / this.showedrows));
         console.log('usersListString', this.usersList);
+        console.log('count', this.count);
       },
       (err: any) => {
         console.log('err', err);
@@ -72,6 +81,32 @@ export class DashboardComponent implements OnInit {
         u.checked = this.options.checkedAll;
         return u;
       });
+    }
+  }
+  public paginate(go) {
+    if (go === 1 && this.numpage < this.pages) {
+      this.numpage++;
+      this.getUsers();
+    }
+    if (go === -1 && this.numpage > 1) {
+      this.numpage--;
+      this.getUsers();
+    }
+    if (go === 'first' && this.numpage > 1) {
+      this.numpage = 1;
+      this.getUsers();
+    }
+    if (go === 'last' && this.numpage < this.pages) {
+      this.numpage = this.pages;
+      this.getUsers();
+    }
+  }
+  public chooseshowed(count) {
+    if (count > 1) {
+      this.showedrows = count;
+      this.numpage = 1;
+      this.getUsers();
+      console.log('this.showedrows', this.showedrows);
     }
   }
 }
