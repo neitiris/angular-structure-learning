@@ -1,6 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../services/userservice';
-import {Router} from '@angular/router';
+import { UserService } from '../../services/userservice';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,40 +8,63 @@ import {Router} from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  public usersList: any[] = [];
-  public usersListString = '';
-  public count = '';
-  public showedrows = 15;
-  public pages = 0;
-  public urlParams = '';
-  public options: any = {
+
+  public tableOptions: any = {
+    headerItems: [
+      { title: 'Id', value: 'id' },
+      { title: 'First Name', value: 'firstName' },
+      { title: 'Email', value: 'email' },
+      { title: 'Company Name', value: 'companyName' },
+      { title: 'Created At', value: 'createdAt' },
+    ],
+    searchItems: [
+      { title: 'First Name', value: 'firstName' },
+      { title: 'Last Name', value: 'lastName' },
+      { title: 'Email', value: 'email' },
+      { title: 'Company Name', value: 'companyName' },
+      { title: 'Description', value: 'description' },
+      { title: 'Phone Number 1', value: 'phoneNumber1' },
+      { title: 'Phone Number 2', value: 'phoneNumber2' },
+    ],
+    paginationItemsSelector: [ 5, 10, 15, 20 ],
+    searchValue: '',
+    count: '',
+    tableItemsAmount: 15,
+    pages: 0,
+    urlParams: '',
     checkedAll: false,
+    activePage: 1,
+    searchKey: 'email',
+    sortKey: 'id',
+    sortDirection: 1 // 1 === Ascent, 2 === Descent
   };
-  public numpage = 1;
-  public where = 'email';
-  public what = '';
-  constructor(public userService: UserService,
-              private router: Router) {
-  }
+  public usersList: any[] = [];
+
+  constructor(
+    public userService: UserService,
+    private router: Router
+  ) { }
 
   public ngOnInit() {
     this.getUsers();
   }
 
-  // request to backend for users list
+  /**
+   * request to backend for users list
+   */
   public getUsers() {
-    // const urlParams = '?page=1&limit=15&where={"phoneNumber1":"123"}';
-    this.urlParams = '?page=' + String(this.numpage) + '&limit=' + String(this.showedrows) + '&order={"createdAt":-1}&where={"' + String(this.where) + '":"' + String(this.what) + '"}';
-    console.log(this.urlParams);
-    this.userService.getUsers(this.urlParams).subscribe(
+    this.tableOptions.urlParams = `?page=${this.tableOptions.activePage}&limit=${this.tableOptions.tableItemsAmount}` +
+      `&order={"${this.tableOptions.sortKey}":${this.tableOptions.sortDirection}}` +
+      `&where={"${this.tableOptions.searchKey}":"${this.tableOptions.searchValue}"}`;
+    console.log(this.tableOptions.urlParams);
+    this.userService.getUsers(this.tableOptions.urlParams).subscribe(
       (resp: any) => {
         console.log('getUsers resp', resp);
         this.usersList = resp.rows;
-        this.usersListString = JSON.stringify(this.usersList, null, 2);
-        this.count = resp.count;
-        this.pages =  Math.ceil(((+this.count) / this.showedrows));
-        console.log('usersListString', this.usersList);
-        console.log('count', this.count);
+        this.tableOptions.count = resp.count;
+        this.tableOptions.pages =  Math.ceil(((+this.tableOptions.count) / this.tableOptions.tableItemsAmount));
+        console.log('this.usersList', this.usersList);
+        console.log('count', this.tableOptions.count);
       },
       (err: any) => {
         console.log('err', err);
@@ -49,12 +72,17 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  // Route to userEdit by id
+  /**
+   * Redirect to userEdit by id
+   * @param id
+   */
   public goToDetails(id) {
     this.router.navigate(['admin', 'manageuser', id]);
   }
 
-  // Route to userEdit for create User
+  /**
+   * Redirect to userEdit for create User
+   */
   public createUser() {
     this.router.navigate(['admin', 'manageuser', 'newUser']);
   }
@@ -72,58 +100,88 @@ export class DashboardComponent implements OnInit {
         if (u.id === item.id) {
           u.checked = !u.checked;
           // Uncheck general checkbox as it can't be checked if any of 'checked' differs from rest of items
-          this.options.checkedAll = false;
+          this.tableOptions.checkedAll = false;
         }
         return u;
       });
     } else {
       // Check/Uncheck all items if no defined item to check
-      this.options.checkedAll = !this.options.checkedAll;
+      this.tableOptions.checkedAll = !this.tableOptions.checkedAll;
       this.usersList = this.usersList.map((u: any) => {
-        u.checked = this.options.checkedAll;
+        u.checked = this.tableOptions.checkedAll;
         return u;
       });
     }
   }
-  public paginate(go) {
-    if (go === 1 && this.numpage < this.pages) {
-      this.numpage++;
+
+  /**
+   * Pagination of table
+   * @param {number | string} go
+   */
+  public paginate(go: number | string) {
+    if (go === 1 && this.tableOptions.activePage < this.tableOptions.pages) {
+      this.tableOptions.activePage++;
       this.getUsers();
-    }
-    if (go === -1 && this.numpage > 1) {
-      this.numpage--;
+    } else if (go === -1 && this.tableOptions.activePage > 1) {
+      this.tableOptions.activePage--;
       this.getUsers();
-    }
-    if (go === 'first' && this.numpage > 1) {
-      this.numpage = 1;
+    } else if (go === 'first' && this.tableOptions.activePage > 1) {
+      this.tableOptions.activePage = 1;
       this.getUsers();
-    }
-    if (go === 'last' && this.numpage < this.pages) {
-      this.numpage = this.pages;
+    } else if (go === 'last' && this.tableOptions.activePage < this.tableOptions.pages) {
+      this.tableOptions.activePage = this.tableOptions.pages;
       this.getUsers();
     }
   }
-  public chooseshowed(count) {
+
+  /**
+   * Select count of showed users
+   * @param {number} count
+   */
+  public chooseShowed(count: number) {
     if (count > 1) {
-      this.showedrows = count;
-      this.numpage = 1;
+      this.tableOptions.tableItemsAmount = count;
+      this.tableOptions.activePage = 1;
       this.getUsers();
-      console.log('this.showedrows', this.showedrows);
+      console.log('this.tableItemsAmount', this.tableOptions.tableItemsAmount);
     }
   }
-  public searhusertag(tag) {
-    this.where = tag;
+
+  /**
+   * Select type of search tag
+   * @param {string} tag
+   */
+  public searchUserTag(tag: string) {
+    this.tableOptions.searchKey = tag;
     this.getUsers();
   }
-  public searchfunc(event: any) {
+
+  /**
+   * Search user by provided string value
+   * @param {string} value
+   */
+  public searchUserBy(value: string) {
     // Debounce logic for reducing API load
-    const newValue: string = event.target.value;
+    const newValue: string = value;
     setTimeout(() => {
-      const prevValue: string = event.target.value;
+      const prevValue: string = value;
+      console.log('prevValue, newValue', prevValue, newValue);
       if (prevValue === newValue) {
-        this.what = event.target.value;
+        this.tableOptions.searchValue = value;
         this.getUsers();
       }
     }, 350);
+  }
+
+  /**
+   * Sort table by key
+   * @param {string} key
+   */
+  public sortTable(key: string) {
+    console.log('key', key);
+    this.tableOptions.sortDirection =
+      key === this.tableOptions.sortKey ? this.tableOptions.sortDirection * -1 : this.tableOptions.sortDirection;
+    this.tableOptions.sortKey = key;
+    this.getUsers();
   }
 }
