@@ -17,10 +17,14 @@ table{
 thead{
   padding: 0;
 }
-tr th{
+tr {
   border: 1px solid black ;
   text-align: center;
   padding: 2px;
+}
+th{
+  border: 1px solid black ;
+  text-align: center;
 }
 tr:nth-child(even) {
   background-color: #dddddd;
@@ -105,3 +109,13 @@ margin-top: 5px;
 .search-userlist input {
   padding-left: 4px;
 }
+
+/**/
+th i.fas{
+  font-size: 70%;
+  /*display: none;*/
+  transition: all .3s ease;
+}
+/*th:active i {*/
+  /*display: inline;*/
+/*}*/
