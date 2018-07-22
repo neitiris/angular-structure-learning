@@ -18,6 +18,8 @@ export class DashboardComponent implements OnInit {
     checkedAll: false,
   };
   public numpage = 1;
+  public where = 'email';
+  public what = '';
   constructor(public userService: UserService,
               private router: Router) {
   }
@@ -29,7 +31,7 @@ export class DashboardComponent implements OnInit {
   // request to backend for users list
   public getUsers() {
     // const urlParams = '?page=1&limit=15&where={"phoneNumber1":"123"}';
-    this.urlParams = '?page=' + String(this.numpage) + '&limit=' + String(this.showedrows) + '&order={"createdAt":-1}';
+    this.urlParams = '?page=' + String(this.numpage) + '&limit=' + String(this.showedrows) + '&order={"createdAt":-1}&where={"' + String(this.where) + '":"' + String(this.what) + '"}';
     console.log(this.urlParams);
     this.userService.getUsers(this.urlParams).subscribe(
       (resp: any) => {
@@ -108,5 +110,20 @@ export class DashboardComponent implements OnInit {
       this.getUsers();
       console.log('this.showedrows', this.showedrows);
     }
+  }
+  public searhusertag(tag) {
+    this.where = tag;
+    this.getUsers();
+  }
+  public searchfunc(event: any) {
+    // Debounce logic for reducing API load
+    const newValue: string = event.target.value;
+    setTimeout(() => {
+      const prevValue: string = event.target.value;
+      if (prevValue === newValue) {
+        this.what = event.target.value;
+        this.getUsers();
+      }
+    }, 350);
   }
 }

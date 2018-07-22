@@ -1,6 +1,15 @@
 <div class="dash-container">
   <!--Table with list from backend-->
   <div class="table-box">
+    <div class="search-userlist">
+      <select id="search-type-select" (change)=searhusertag($event.target.value) >
+        <option value="companyName">by Company name</option>
+        <option value="firstName">by First name</option>
+        <option value="email" selected>by email</option>
+        <option value="phoneNumber1">by phone number</option>
+      </select>
+      <input type="text" placeholder="Search..." (keyup)="searchfunc($event)">
+    </div>
     <table>
       <thead>
       <tr>
@@ -18,13 +27,13 @@
       <tr *ngFor="let item of usersList">
         <td class="checkbox"><input type="checkbox" [checked]="item.checked" class="checkbox" (click)="check(item)"/></td>
         <td class="id-td">{{item.id}}</td>
-        <td>{{item.firstName}}</td>
-        <td>{{item.email}}</td>
-        <td>{{item.companyName}}</td>
-        <td>{{item.createdAt}}</td>
-        <td><button class="editCl" (click)="goToDetails(this.item.id)">
+        <td class="name-collumn">{{item.firstName}}</td>
+        <td class="email-column">{{item.email}}</td>
+        <td class="company-column">{{item.companyName}}</td>
+        <td class="created-id">{{item.createdAt}}</td>
+        <td class="edit"><button class="editCl" (click)="goToDetails(this.item.id)">
           <i class="fa fa-edit"></i></button></td>
-        <td>
+        <td class="delete-column">
           <button *ngIf="false" class="deleteCl" (click)="deleteUserData(this.item.id)" >
           <i *ngIf="false" class="fa fa-trash"></i></button></td>
         </tr>
