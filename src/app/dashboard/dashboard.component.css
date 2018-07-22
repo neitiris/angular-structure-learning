@@ -7,6 +7,7 @@
   border-radius: 7px;
   font-size: 90%;
   background: white;
+  width: 800px;
 }
 table{
   margin: 10px;
@@ -28,9 +29,24 @@ tr td{
   border: 1px solid lightgrey;
   padding: 3px 3px 3px 12px;
 }
+.checkbox, .edit, .delete-column{
+  padding: 3px !important;
+}
 .id-td{
   padding: 0 3px 0 3px !important;
   text-align: center;
+}
+.created-id{
+  width: 165px;
+}
+.name-collumn{
+  min-width: 115px;
+}
+.email-column{
+  min-width: 115px;;
+}
+.company-column{
+  min-width: 100px;
 }
 tr td button{
   height: 24px;
@@ -76,4 +92,16 @@ margin-top: 5px;
   margin-right: 3px;
   background: none;
   background: white;
+}
+
+/*st*/
+.search-userlist{
+  float: left;
+  margin: 5px 10px 5px 10px;
+}
+.search-userlist * {
+  border: 1px solid gray;
+}
+.search-userlist input {
+  padding-left: 4px;
 }
