@@ -1,8 +1,8 @@
-p {
+p{
   font-size: 108%;
 }
 
-.about-container {
+.about-container{
   max-width: 1000px;
   margin: auto;
   display: grid;
@@ -12,8 +12,7 @@ p {
   border-radius: 5px;
   height: 100%;
 }
-
-.about-container h2 {
+.about-container h2{
   margin: 3px;
   left: 40%;
   width: 200px;
@@ -22,8 +21,7 @@ p {
   position: relative;
   background: transparent;
 }
-
-img {
+img{
   border-radius: 50%;
   height: 180px;
   border: 1px solid #595959;
@@ -31,24 +29,20 @@ img {
   margin: 0 21px 21px 21px;
   float: left;
 }
-
 [data-aos^=zoom][data-aos^=zoom].aos-animate {
   opacity: 1;
   transform: translate(0) scale(1);
 }
-
-.content {
-  padding: 20px;
+.content{
+  padding:20px;
   background: #424242;
   border-radius: 4px;
 }
-
-.content h5 {
+.content h5{
   margin: 0;
   text-align: center;
   font-size: 23px;
 }
-
 .skill-progress {
   position: relative;
   background-color: #1c1c1c;
@@ -57,7 +51,6 @@ img {
   z-index: 0;
   overflow: visible;
 }
-
 .progress .determinate {
   position: absolute;
   top: 0;
@@ -66,11 +59,9 @@ img {
   background-color: #ffffff;
   transition: width 2s linear;
 }
-
 .skill-determinate {
   transition: width 1s ease;
 }
-
 .skill-determinate .skill-determinate-circle {
   position: absolute;
   right: 0%;
@@ -78,36 +69,28 @@ img {
   color: #ffffff;
   font-size: 18px;
 }
-
-i {
-  transition-delay: 0.3s;
+i{
+  transition-delay: .3s;
 }
-
-.row h3 {
+.row h3{
   text-align: center;
   color: black;
   font-size: 40px;
   margin: 0 0 10px 0;
   padding-top: 40px;
 }
-
-.row .col {
+.row .col{
   float: left;
   box-sizing: border-box;
   width: 33.33%;
   padding: 15px;
 }
-
-.row * {
+.row *{
   color: white;
 }
-
-.header-container-block {
+.header-container-block{
   min-height: 30%;
 }
-
 .width-zero {
   width: 0 !important;
 }
-
-/*# sourceMappingURL=about.component.css.map */

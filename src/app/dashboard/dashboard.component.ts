@@ -5,7 +5,7 @@ import { UserService } from '../../services/userservice';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
 
@@ -77,14 +77,14 @@ export class DashboardComponent implements OnInit {
    * @param id
    */
   public goToDetails(id) {
-    this.router.navigate(['admin', 'manageuser', id]);
+    this.router.navigate(['admin', 'manage', id]);
   }
 
   /**
    * Redirect to userEdit for create User
    */
   public createUser() {
-    this.router.navigate(['admin', 'manageuser', 'newUser']);
+    this.router.navigate(['admin', 'manage', 'newUser']);
   }
 
   /**

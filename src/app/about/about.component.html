@@ -1,150 +1,92 @@
 <div class="about-container">
   <div class="header-container-block">
-    <div class="line"></div>
     <h2>About Me</h2>
 
     <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=350">
 
     <div class="column2">
-      <p>I`m practicing programming on WebStorm using both Windows and Ubuntu.
-        Mainly HTML5, CSS3 and JavaScript are the core of my projects. For some of them I use Bootstap library on basic level.
+      <p>
+        I have vast theoretical knowledge in front end development from A to Z, have good
+        practical skills in slicing PSD templates, creating responsive pages (Bootstrap grid, Flexbox, BEM
+        Methodology) with valid and cross browser code. Well familiar with using React and Javascript for
+        best performance. I am ready to take new challenges, not afraid to learn, improve and get better. Can
+        prove myself as an excellent team player.
+      </p>
+      <p>
+        I`m practicing programming on WebStorm using both Windows and Ubuntu.
+        Mainly HTML5, CSS3 and JavaScript are the core of my projects.
         latest project was based on requests to RESTful API with JSON Web Tokens,
-        that gave me an understanding of CRUD operations and way of implementing security in API requests.</p>
-      <p>Have english pre-intermediate skill of written and spoken,
+        that gave me an understanding of CRUD operations and way of implementing security in API requests.
+      </p>
+      <p>
+        Have english intermediate skill of written and spoken,
         experience in HTML5, CSS3, Javascript, TypeScript, git, Angular 2+.
       </p>
     </div>
   </div>
   <div class="row">
+
     <h3>Skills</h3>
+
     <!--***********************Progress Column*************************-->
     <div class="col">
       <div class="content">
+
         <h5>Professional</h5>
 
-        <div class="skill-progress-div">
-          <p>UI/UX <span>50%</span></p>
-          <div class="progress skill-progress" data-percent="40%">
-            <div class="determinate skill-determinate" style="width: 50%;" [ngClass]="{'width-zero':!loaded}">
-              <i class="skill-determinate-circle fa fa-circle aos-init aos-animate" data-aos="zoom-in"
-                 data-aos-delay="300" data-aos-offset="0"></i>
+        <ng-container *ngFor="let skill of dataProfessional">
+          <div class="skill-progress-div">
+            <p>{{skill.title}} {{skill.percent}}%</p>
+            <div class="progress skill-progress" data-percent="40%">
+              <div class="determinate skill-determinate" [style.width]="skill.percent + '%'"
+                   [ngClass]="{'width-zero': !loaded}">
+                <i class="skill-determinate-circle fa fa-circle aos-init aos-animate" data-aos="zoom-in"
+                   data-aos-delay="300" data-aos-offset="0"></i>
+              </div>
             </div>
           </div>
-        </div>
+        </ng-container>
 
-        <div class="skill-progress-div">
-          <p>Angular <span>40%</span></p>
-          <div class="progress skill-progress" data-percent="40%">
-            <div class="determinate skill-determinate" style="width: 40%;" [ngClass]="{'width-zero':!loaded}">
-              <i class="skill-determinate-circle fa fa-circle aos-init aos-animate" data-aos="zoom-in"
-                 data-aos-delay="300" data-aos-offset="0"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-progress-div">
-          <p>JavaScript <span>30%</span></p>
-          <div class="progress skill-progress" data-percent="30%">
-            <div class="determinate skill-determinate" style="width: 30%;" [ngClass]="{'width-zero':!loaded}">
-              <i class="skill-determinate-circle fa fa-circle aos-init aos-animate" data-aos="zoom-in"
-                 data-aos-delay="300" data-aos-offset="0"></i>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
-<!--***************************Personal Column****************************-->
+    <!--***************************Personal Column****************************-->
     <div class="col">
       <div class="content">
         <h5>Personal</h5>
 
-        <div class="skill-progress-div">
-          <p>Commited <span>50%</span></p>
-          <div class="progress skill-progress" data-percent="40%">
-            <div class="determinate skill-determinate" style="width: 50%;" [ngClass]="{'width-zero':!loaded}">
-              <i class="skill-determinate-circle fa fa-circle aos-init aos-animate" data-aos="zoom-in"
-                 data-aos-delay="300" data-aos-offset="0"></i>
+        <ng-container *ngFor="let skill of dataPersonal">
+          <div class="skill-progress-div">
+            <p>{{skill.title}} {{skill.percent}}%</p>
+            <div class="progress skill-progress" data-percent="40%">
+              <div class="determinate skill-determinate" [style.width]="skill.percent + '%'"
+                   [ngClass]="{'width-zero': !loaded}">
+                <i class="skill-determinate-circle fa fa-circle aos-init aos-animate" data-aos="zoom-in"
+                   data-aos-delay="300" data-aos-offset="0"></i>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="skill-progress-div">
-          <p>Puctual <span>40%</span></p>
-          <div class="progress skill-progress" data-percent="40%">
-            <div class="determinate skill-determinate" style="width: 40%;" [ngClass]="{'width-zero':!loaded}">
-              <i class="skill-determinate-circle fa fa-circle aos-init aos-animate" data-aos="zoom-in"
-                 data-aos-delay="300" data-aos-offset="0"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-progress-div">
-          <p>Leadership <span>30%</span></p>
-          <div class="progress skill-progress" data-percent="30%">
-            <div class="determinate skill-determinate" style="width: 30%;" [ngClass]="{'width-zero':!loaded}">
-              <i class="skill-determinate-circle fa fa-circle aos-init aos-animate" data-aos="zoom-in"
-                 data-aos-delay="300" data-aos-offset="0"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-progress-div">
-          <p>Communicative <span>30%</span></p>
-          <div class="progress skill-progress" data-percent="30%">
-            <div class="determinate skill-determinate" style="width: 30%;" [ngClass]="{'width-zero':!loaded}">
-              <i class="skill-determinate-circle fa fa-circle aos-init aos-animate" data-aos="zoom-in"
-                 data-aos-delay="300" data-aos-offset="0"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-progress-div">
-          <p>Analytical Skill <span>30%</span></p>
-          <div class="progress skill-progress" data-percent="30%">
-            <div class="determinate skill-determinate" style="width: 30%;" [ngClass]="{'width-zero':!loaded}">
-              <i class="skill-determinate-circle fa fa-circle aos-init aos-animate" data-aos="zoom-in"
-                 data-aos-delay="300" data-aos-offset="0"></i>
-            </div>
-          </div>
-        </div>
+        </ng-container>
       </div>
     </div>
 
-<!--*********************Language Column**************************-->
-    <div class="col ">
+    <!--*********************Language Column**************************-->
+    <div class="col">
       <div class="content">
         <h5>Language</h5>
 
-        <div class="skill-progress-div">
-          <p>English <span>50%</span></p>
-          <div class="progress skill-progress" data-percent="40%">
-            <div class="determinate skill-determinate" style="width: 50%;" [ngClass]="{'width-zero':!loaded}">
-              <i class="skill-determinate-circle fa fa-circle aos-init aos-animate" data-aos="zoom-in"
-                 data-aos-delay="300" data-aos-offset="0"></i>
+        <ng-container *ngFor="let skill of dataLanguage">
+          <div class="skill-progress-div">
+            <p>{{skill.title}} {{skill.percent}}%</p>
+            <div class="progress skill-progress" data-percent="40%">
+              <div class="determinate skill-determinate" [style.width]="skill.percent + '%'"
+                   [ngClass]="{'width-zero': !loaded}">
+                <i class="skill-determinate-circle fa fa-circle aos-init aos-animate" data-aos="zoom-in"
+                   data-aos-delay="300" data-aos-offset="0"></i>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="skill-progress-div">
-          <p>Russian <span>40%</span></p>
-          <div class="progress skill-progress" data-percent="40%">
-            <div class="determinate skill-determinate" style="width: 40%;" [ngClass]="{'width-zero':!loaded}">
-              <i class="skill-determinate-circle fa fa-circle aos-init aos-animate" data-aos="zoom-in"
-                 data-aos-delay="300" data-aos-offset="0"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-progress-div">
-          <p>Ukrainian <span>30%</span></p>
-          <div class="progress skill-progress" data-percent="30%">
-            <div class="determinate skill-determinate" style="width: 30%;" [ngClass]="{'width-zero':!loaded}">
-              <i class="skill-determinate-circle fa fa-circle aos-init aos-animate" data-aos="zoom-in"
-                 data-aos-delay="300" data-aos-offset="0"></i>
-            </div>
-          </div>
-        </div>
+        </ng-container>
       </div>
     </div>
   </div>

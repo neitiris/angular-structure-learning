@@ -4,10 +4,10 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-basecover',
-  templateUrl: './basecover.component.html',
-  styleUrls: ['./basecover.component.css']
+  templateUrl: './admin-page.component.html',
+  styleUrls: ['./admin-page.component.scss']
 })
-export class BasecoverComponent implements OnInit {
+export class AdminPageComponent implements OnInit {
 
   public menuItems: any[] = [
     {ico: 'fas fa-tachometer-alt', header: 'Dashboard', button: ['Dashboard1', 'Dashboard2']},

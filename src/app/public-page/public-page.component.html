@@ -1,0 +1,23 @@
+<div class="background-img"></div>
+<div class="landing-container">
+  <header class="header">
+    <a routerLink="/" class="bigLogo">VLAD</a>
+
+    <nav class="header--nav">
+      <a class="header--nav-link" routerLink="/about">ABOUT</a>
+<!--      <a class="header&#45;&#45;nav-link" routerLink="/skills">SKILLS</a>-->
+      <div class="nav-dropdown menu-header-btn">
+        <button class=" dropbtn"><i class="fas fa-bars"></i></button>
+        <div class="dropdown-content">
+          <a routerLink="#">Link 1</a>
+          <a routerLink="#">Link 2</a>
+          <a routerLink="#">Link 3</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="settings-btn"><a routerLink="/login"><i class="fa fa-cog"></i></a></div>
+  <div class="content-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

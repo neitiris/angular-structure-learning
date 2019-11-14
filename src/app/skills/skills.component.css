@@ -1,78 +1,103 @@
-ul, li{
+@charset "UTF-8";
+ul, li {
   padding-left: 0;
 }
-li{
+
+li {
   list-style: none;
 }
-h4{
+
+h4 {
   margin-bottom: 3px;
 }
-.skill-logo{
+
+.skill-logo {
   text-align: center;
 }
+
 .progress {
-  background: -moz-linear-gradient(top, #333, #999); /* Fx 3.6+ */
-  background: -webkit-linear-gradient(top, #333, #999); /* Chrome 10+,Safari 5.1+ */
-  background: -o-linear-gradient(top, #333,#999); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #333, #999); /* IE10+ */
-  background: linear-gradient(to bottom, #333, #999); /* W3C */
+  background: -moz-linear-gradient(top, #333, #999);
+  /* Fx 3.6+ */
+  background: -webkit-linear-gradient(top, #333, #999);
+  /* Chrome 10+,Safari 5.1+ */
+  background: -o-linear-gradient(top, #333, #999);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #333, #999);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #333, #999);
+  /* W3C */
   border: 1px solid #333;
   height: 20px;
   border-radius: 10px;
   position: relative;
   overflow: hidden;
 }
-.progress::before{
-  content: '';
+
+.progress::before {
+  content: "";
   position: absolute;
   height: 18px;
   background: #5bc1fe;
-  background: -moz-linear-gradient(top, #5bc1fe, #018ef2 50%, #57befd); /* Fx 3.6+ */
-  background: -webkit-linear-gradient(top, #5bc1fe, #018ef2 50%, #57befd); /* Chrome 10+,Safari 5.1+ */
-  background: -o-linear-gradient(top, #5bc1fe,#018ef2 50%,#57befd); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #5bc1fe, #018ef2 50%, #57befd); /* IE10+ */
-  background: linear-gradient(to bottom, #5bc1fe,#018ef2 50%, #57befd); /* W3C */
-  border: 1px solid #008DF2; /* Рамка */
-  box-shadow: 3px 0 3px rgba(0,0,0,0.5);
+  background: -moz-linear-gradient(top, #5bc1fe, #018ef2 50%, #57befd);
+  /* Fx 3.6+ */
+  background: -webkit-linear-gradient(top, #5bc1fe, #018ef2 50%, #57befd);
+  /* Chrome 10+,Safari 5.1+ */
+  background: -o-linear-gradient(top, #5bc1fe, #018ef2 50%, #57befd);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #5bc1fe, #018ef2 50%, #57befd);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #5bc1fe, #018ef2 50%, #57befd);
+  /* W3C */
+  border: 1px solid #008DF2;
+  /* Рамка */
+  box-shadow: 3px 0 3px rgba(0, 0, 0, 0.5);
 }
-#html-line::before{
+
+#html-line::before {
   width: 50%;
 }
-#js-line::before{
+
+#js-line::before {
   width: 45%;
 }
-#angular-line::before{
+
+#angular-line::before {
   width: 47%;
 }
-#bootstrap-line::before{
+
+#bootstrap-line::before {
   width: 15%;
 }
-.skills-container{
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+.skills-container {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   height: 500px;
   width: 500px;
   background: white;
   padding: 10px 20px 10px 20px;
   border-radius: 4px;
 }
-span{
+
+span {
   position: absolute;
   left: calc(50% - 0.8em);
   z-index: 1;
   color: white;
 }
 
-
 /***********************************************************
           circle progress bar
 ***********************************************************/
-
 .wrapper {
-  width: 100px; /* Set the size of the progress bar */
+  width: 100px;
+  /* Set the size of the progress bar */
   height: 100px;
-  position: absolute; /* Enable clipping */
-  clip: rect(0px, 100px, 100px, 50px); /* Hide half of the progress bar */
+  position: absolute;
+  /* Enable clipping */
+  clip: rect(0px, 100px, 100px, 50px);
+  /* Hide half of the progress bar */
 }
+
 /* Set the sizes of the elements that make up the progress bar */
 .circle {
   width: 80px;
@@ -86,24 +111,32 @@ span{
 /* Using the data attributes for the animation selectors. */
 /* Base settings for all animated elements */
 div[data-anim~=base] {
-  -webkit-animation-iteration-count: 1;  /* Only run once */
-  -webkit-animation-fill-mode: forwards; /* Hold the last keyframe */
-  -webkit-animation-timing-function:linear; /* Linear animation */
+  -webkit-animation-iteration-count: 1;
+  /* Only run once */
+  -webkit-animation-fill-mode: forwards;
+  /* Hold the last keyframe */
+  -webkit-animation-timing-function: linear;
+  /* Linear animation */
 }
 
 .wrapper[data-anim~=wrapper] {
-  -webkit-animation-duration: 0.01s; /* Complete keyframes asap */
-  -webkit-animation-delay: 3s; /* Wait half of the animation */
-  -webkit-animation-name: close-wrapper; /* Keyframes name */
+  -webkit-animation-duration: 0.01s;
+  /* Complete keyframes asap */
+  -webkit-animation-delay: 3s;
+  /* Wait half of the animation */
+  -webkit-animation-name: close-wrapper;
+  /* Keyframes name */
 }
 
 .circle[data-anim~=left] {
-  -webkit-animation-duration: 6s; /* Full animation time */
+  -webkit-animation-duration: 6s;
+  /* Full animation time */
   -webkit-animation-name: left-spin;
 }
 
 .circle[data-anim~=right] {
-  -webkit-animation-duration: 3s; /* Half animation time */
+  -webkit-animation-duration: 3s;
+  /* Half animation time */
   -webkit-animation-name: right-spin;
 }
 
@@ -131,12 +164,15 @@ div[data-anim~=base] {
     clip: rect(auto, auto, auto, auto);
   }
 }
-.circles-ul{
+.circles-ul {
   display: inline-flex;
- }
-.circles-ul li{
+}
+
+.circles-ul li {
   height: 100px;
   width: 100px;
   padding-left: 11px;
   padding-right: 11px;
 }
+
+/*# sourceMappingURL=skills.component.css.map */
