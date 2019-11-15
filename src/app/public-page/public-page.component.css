@@ -8,10 +8,9 @@
 
 .landing-container {
   height: 100%;
-  z-index: 1000;
-  position: relative;
   background: url(/assets/photo-top.jpg) no-repeat center;
   box-shadow: 0 1px 3px 3px gray;
+  max-width: 1900px;
 }
 
 /**************************
@@ -26,10 +25,13 @@
 }
 
 .header {
-  padding-bottom: 25px;
   display: flex;
+  position: relative;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
+  height: 60px;
+  background: rgba(25, 20, 36, 0.1);
 }
 .header--nav {
   display: flex;
@@ -42,26 +44,6 @@
 }
 .header--nav-link:hover {
   color: #4b646f;
-}
-
-header ul {
-  float: right;
-  display: inline-flex;
-  margin: 0;
-}
-
-header ul li {
-  padding-left: 5px;
-  padding-right: 5px;
-  list-style: none;
-}
-
-header ul li a {
-  text-decoration: none;
-}
-
-td {
-  color: #9190a3;
 }
 
 .menu-header-btn button {
@@ -81,7 +63,7 @@ absolute btn settings
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 3px 4px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 4px 5px rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   z-index: 1;
   right: 0;
@@ -110,34 +92,14 @@ absolute btn settings
   display: block;
 }
 
-.settings-btn {
-  margin-top: 80px;
-  position: absolute;
-  height: 60px;
-  width: 60px;
-  background: white;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-
-.settings-btn a {
-  border: none;
-  background: white;
-}
-
-.settings-btn a i {
-  font-size: 43px;
-  padding: 9px;
-  color: #374850;
-}
-
 /**************************
     content Portfolio
 **************************/
 .content-container {
-  padding-top: 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: calc(100% - 60px);
 }
 
 /*# sourceMappingURL=public-page.component.css.map */

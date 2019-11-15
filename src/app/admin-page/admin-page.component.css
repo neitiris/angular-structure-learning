@@ -15,6 +15,14 @@ a, span {
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.admin-container {
+  max-width: 2000px;
+  max-height: 1000px;
+  background: url("/assets/admin_bg.jpg") center no-repeat;
+  height: 100%;
+  margin: auto;
+}
+
 /********************************************************
                       Header
 *********************************************************/
@@ -175,6 +183,9 @@ img {
   padding-bottom: 10px;
   cursor: pointer;
 }
+.showed:hover span {
+  color: cornflowerblue;
+}
 
 .showed span {
   display: inline-flex;
@@ -200,7 +211,7 @@ img {
 
 .content-block {
   color: initial;
-  padding: 0 0 0 230px;
+  height: calc(100% - 50px);
 }
 
 .dropdown-content {
@@ -208,10 +219,17 @@ img {
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 3px 4px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 4px 5px rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   z-index: 1;
   right: 0;
+}
+.dropdown-content a {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.dropdown-content a:hover {
+  color: #090043;
 }
 
 .menu-header-btn:hover .menu-header-btn {
@@ -238,6 +256,17 @@ img {
 
 .showed-header-btns:hover .dropdown-content {
   display: block;
+}
+
+/***/
+.list--item_link {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.category-list_item:hover .list--item_link {
+  color: #008DF2;
 }
 
 /*# sourceMappingURL=admin-page.component.css.map */

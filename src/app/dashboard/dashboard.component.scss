@@ -1,13 +1,16 @@
 .dash-container{
-  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 50px);
 }
 .table-box{
   border: 3px solid lightgrey;
-  display: inline-block;
   border-radius: 7px;
   font-size: 90%;
   background: white;
-  width: 800px;
+  max-width: 800px;
+  display: grid;
 }
 table{
   margin: 10px;
@@ -52,11 +55,9 @@ tr td{
 .created-id{
   width: 165px;
 }
-.name-collumn{
+.name-column, .email-column {
   min-width: 115px;
-}
-.email-column{
-  min-width: 115px;;
+
 }
 .company-column{
   min-width: 100px;
@@ -70,7 +71,7 @@ tr td button{
   padding: 4px;
   font-size: 17px;
 }
-#createU, #delU, #mU{
+.btn--createUser, .btn--deleteUser, #mU{
   margin: 0 0 10px  10px ;
   border: none;
   border-radius: 4px;
@@ -78,10 +79,16 @@ tr td button{
   height: 25px;
   padding: 0 4px 0 4px;
 }
-#createU{
+.btn {
+  transition: 0.3s;
+  &:hover {
+    color: #1a2226;
+  }
+}
+.btn--createUser{
   background: cornflowerblue;
 }
-#delU, .deleteCl{
+.btn--deleteUser, .deleteCl{
   background: red;
 }
 .editCl{
@@ -134,3 +141,12 @@ th i.fas{
 /*th:active i {*/
   /*display: inline;*/
 /*}*/
+
+/**/
+.editCl {
+  color: white;
+  transition: 0.3s;
+  &:hover {
+    color: black;
+  }
+};

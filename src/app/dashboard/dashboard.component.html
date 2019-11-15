@@ -31,7 +31,7 @@
       <tr *ngFor="let item of usersList">
         <td class="checkbox"><input type="checkbox" [checked]="item.checked" class="checkbox" (click)="check(item)"/></td>
         <td class="id-td">{{item.id}}</td>
-        <td class="name-collumn">{{item.firstName}}</td>
+        <td class="name-column">{{item.firstName}}</td>
         <td class="email-column">{{item.email}}</td>
         <td class="company-column">{{item.companyName}}</td>
         <td class="created-id">{{item.createdAt}}</td>
@@ -43,6 +43,9 @@
         </tr>
       </tbody>
     </table>
+  <div>
+    <button class="btn btn--createUser" (click)="createUser()">Create User</button>
+    <button class="btn btn--deleteUser">Delete Marked Users</button>
     <div class="pagination">
       <select (change)= chooseShowed($event.target.value)>
         <option *ngFor="let onPage of tableOptions.paginationItemsSelector" [value]="onPage" [selected]="onPage === tableOptions.tableItemsAmount">{{onPage}}</option>
@@ -53,8 +56,7 @@
       <button (click)="paginate(1)">></button>
       <button (click)="paginate('last')">>></button>
     </div>
-    <button id="createU" (click)="createUser()">Create User</button>
-    <button id="delU">Delete Marked Users</button>
+  </div>
   </div>
   <!--End of Table with list from backend-->
 </div>

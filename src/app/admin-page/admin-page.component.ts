@@ -90,6 +90,6 @@ export class AdminPageComponent implements OnInit {
   quit() {
     this.authservice.logOutFunk();
     console.log('Log out sucsess');
-    this.router.navigate([ '', 'land']);
+    this.router.navigate([ '' ]);
   }
 }

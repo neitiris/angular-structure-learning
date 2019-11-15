@@ -17,6 +17,13 @@
   padding: 25px;
   text-align: center;
 }
+
+.input--label {
+  width: 100%;
+  display: grid;
+  text-align: left;
+  justify-content: center;
+}
 form, input, button{
   border-radius: 6px;
 }
@@ -29,11 +36,18 @@ input{
   font-size: 120%;
   padding-left: 15px;
 }
-button{
+.btn--sign_in{
   margin-top: 20px;
   height: 40px;
   font-size: 120%;
   background: aquamarine;
   border: none;
   box-shadow: #373c3e;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background: #00bb00;
+    color: white;
+    border: 1px solid white;
+   }
 }
